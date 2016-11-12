@@ -1,0 +1,12 @@
+(define (for-each function-to-apply elements)
+  (if (null? elements)
+    ()
+    ((lambda()
+      (function-to-apply (car elements))
+      (for-each function-to-apply (cdr elements))
+    ))
+  )
+)
+
+(for-each (lambda(x) (newline) (display x))
+          (list 57 321 88))
