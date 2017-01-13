@@ -1,0 +1,33 @@
+(define true #t)
+(define false #f)
+
+(define (display-on-single-line . args)
+   (map display args)
+   (display "\n")
+) 
+
+(define (prime? number)
+  (define (greatest_divider_of_number last_try)
+    (if (= (mod number (- last_try 1)) 0) 
+        (- last_try 1)
+        (greatest_divider_of_number (- last_try 1))
+    )
+  )
+  
+  (cond ((<= number 1) false)
+        ((<= number 3) true)
+        ((= (mod number 2)0) false)
+        (else (< (greatest_divider_of_number number) 2 ))
+  ) 
+)
+
+
+(display-on-single-line "Is prime 0: " (prime? 0))
+(display-on-single-line "Is prime 1: " (prime? 1))
+(display-on-single-line "Is prime 2: " (prime? 2))
+(display-on-single-line "Is prime 3: " (prime? 3))
+(display-on-single-line "Is prime 4: " (prime? 4))
+(display-on-single-line "Is prime 13: " (prime? 13))
+(display-on-single-line "Is prime 16: " (prime? 16))
+(display-on-single-line "Is prime 17: " (prime? 17))
+(display-on-single-line "Is prime 17: " (prime? 21))
